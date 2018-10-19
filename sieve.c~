@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "sieve.h"
+
+int sieve(int targetPrime){
+  int k = (int) (targetPrime * 1.5) + 20;
+  int arr[k];
+  int i = 0;
+  while (i < k){
+    
+  }
+  int n = 2;
+  if (
+  
+  return 0;
+}
