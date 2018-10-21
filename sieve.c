@@ -2,45 +2,41 @@
 #include <stdlib.h>
 #include <math.h>
 #include "sieve.h"
-#include <time.h>
+
 
 int sieve(int targetPrime){
-  int k =  targetPrime * (int) (1.2 * log(targetPrime)) + 20;
-  int arr[k];
+  int k =  (int) ( (targetPrime * (int) (1.5 * log(targetPrime)) + 20 )/2);
+  int *arr;
+  arr = (int*)(calloc(k, sizeof(int)) );
   
-  int i = 2;
-  arr[0] = 0;
-  arr[1] = 1;
-  //setup array
-  while (i < k){
-    arr[i] = i;
-    i++;
-  }
-  
-  int j = 2;
-  int m;
-  //sieve of eratosthenes
+  int j = 1;
+  int m, o;
+
   for (j; j <= sqrt(k); j++){
-    if (arr[j] != 0){
-      m = 2*j; //next multiple of j;
-      for (m; m < k; m+=j){
-	 arr[m] = 0;	
+    if (*(arr+j) == 0){
+      o = 2*j + 1; //incrementing to get nxt multiple of j
+      m = j + o; //next multiple of j;
+      for (m; m < k; m+=o){
+	*(arr+m) = 1;
       }
     }
   }
 
+  
   int ctr = 0;
-  int n = 0;
+  int n = 1;
   //find nonzero values
   for (n; n < k; n++){
-    if (arr[n] != 0){
+    if (*(arr+n) == 0){
       ctr += 1;
-      if (ctr == targetPrime){
-	return arr[n];
+      if (ctr == (targetPrime - 1)){
+	return 2*n + 1;
       }
     }
   }
   
   
   return 0;
+
 }
+
