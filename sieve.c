@@ -2,21 +2,20 @@
 #include <stdlib.h>
 #include <math.h>
 #include "sieve.h"
+#include <time.h>
 
 int sieve(int targetPrime){
-  int k =  targetPrime * (int) (1.25 * log(targetPrime)) + 20;
+  int k =  targetPrime * (int) (1.2 * log(targetPrime)) + 20;
   int arr[k];
   
-  arr[0] = 0;
-  arr[1] = 0;
-
   int i = 2;
+  arr[0] = 0;
+  arr[1] = 1;
   //setup array
   while (i < k){
     arr[i] = i;
     i++;
   }
-
   
   int j = 2;
   int m;

@@ -9,7 +9,7 @@ int main(int argc, char * argv[]){
   clock_t t;
   double cpu_time;
   int iterations = 1;
-  int target = 100000;
+  int target = 149000;
   
   if(argc > 1){
     target = atoi(argv[1]);
